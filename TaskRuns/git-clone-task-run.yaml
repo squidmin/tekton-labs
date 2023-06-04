@@ -1,0 +1,19 @@
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  generateName: git-clone-
+spec:
+  taskRef:
+    kind: Task
+    name: git-clone
+  params:
+    - name: url
+      value: https://github.com/squidmin/java11-spring-gradle-cucumber-reference
+    - name: deleteExisting
+      value: "true"
+  serviceAccountName: ''
+  workspaces:
+    - name: output
+      # emptyDir: {}
+      persistentVolumeClaim:
+        claimName: shared-workspace

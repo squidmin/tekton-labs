@@ -6,5 +6,5 @@ spec:
   pipelineRef:
     name: hello-goodbye
   params:
-  - name: username
-    value: "Tekton"
+    - name: username
+      value: "Tekton"

@@ -1,1 +1,6 @@
 .DS_Store
+
+.idea/
+
+Secrets/ssh_secret.yaml
+Secrets/basic_auth_secret.yaml
