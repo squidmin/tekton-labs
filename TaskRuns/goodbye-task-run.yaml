@@ -5,4 +5,4 @@ metadata:
 spec:
   serviceAccountName: ''
   taskRef:
-    name: hello
+    name: goodbye

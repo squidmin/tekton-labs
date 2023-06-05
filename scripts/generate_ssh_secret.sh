@@ -10,7 +10,7 @@ cat <<EOF > ./Secrets/ssh_secret.yaml
 apiVersion: v1
 kind: Secret
 metadata:
-  annoatations:
+  annotations:
     tekton.dev/git-0: https://github.com
 type: kubernetes.io/ssh-auth
 stringData:

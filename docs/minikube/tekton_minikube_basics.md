@@ -23,7 +23,7 @@ This `README` show you how to:
 minikube start --kubernetes-version v1.24.4
 ```
 
-<!-- <img src="img/minikube_start_cmd.gif" width="600px"> -->
+<img src="img/minikube_start_cmd.gif" width="600px">
 
 
 ### 2. Check that the cluster was successfully created using `kubectl`
@@ -52,7 +52,7 @@ kubectl cluster-info
     kubectl get pods --namespace tekton-pipelines --watch
     ```
 
-    <!-- <img src="img/kubectl_get_pods_cmd.gif" width="600px"> -->
+    <img src="img/kubectl_get_pods_cmd.gif" width="600px">
 
     When both `tekton-pipelines-controller` and `tekton-pipelines-webhook` show `1/1` under the `READY` column, you are ready to continue. For example:
 
@@ -73,9 +73,10 @@ kubectl cluster-info
 ---
 
 
-### Create and run a basic `Task`
+## Create and run a basic `Task`
 
 A `Task`, represented in the API as an object of kind `Task`, defines a series of `Steps` that run sequentially to perform logic that the `Task` requires.
+
 Every `Task` runs as a pod on the Kubernetes cluster, with each step running in its own container.
 
 1. To create a `Task`, open your favorite editor and create a file named `hello.yaml` with the following contents:
@@ -97,7 +98,7 @@ Every `Task` runs as a pod on the Kubernetes cluster, with each step running in 
 2. Apply the changes to your cluster:
 
     ```shell
-    kubectl apply --filename hello.yaml
+    kubectl apply --filename Tasks/hello.yaml
     ```
 
     The output confirms that the `Task` was completed successfully.
@@ -114,6 +115,7 @@ Every `Task` runs as a pod on the Kubernetes cluster, with each step running in 
     metadata:
       name: hello-task-run
     spec:
+      serviceAccountName: ''
       taskRef:
         name: hello
     ```

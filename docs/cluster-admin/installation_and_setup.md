@@ -51,7 +51,7 @@ minikube start --kubernetes-version v1.24.4
 #minikube start --driver qemu --network socket_vmnet
 ```
 
-<!-- <img src="img/minikube_start_cmd.gif"> -->
+<img src="img/minikube_start_cmd.gif">
 
 </details>
 
@@ -90,7 +90,7 @@ kubectl cluster-info
      kubectl get pods --namespace tekton-pipelines --watch
      ```
 
-     <!-- <img src="img/kubectl_get_pods_cmd.gif" width="600px"> -->
+     <img src="img/kubectl_get_pods_cmd.gif" width="600px">
 
      When both `tekton-pipelines-controller` and `tekton-pipelines-webhook` show `1/1` under the `READY` column, you are ready to continue. For example:
 
