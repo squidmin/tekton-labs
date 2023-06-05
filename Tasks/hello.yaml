@@ -7,5 +7,5 @@ spec:
     - name: echo
       image: alpine
       script: |
-        #!/bin/bash
+        #!/bin/sh
         echo "Hello"

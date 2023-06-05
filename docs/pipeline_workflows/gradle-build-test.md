@@ -1,4 +1,4 @@
-# `clone-read` pipeline workflow
+# `gradle-build-test` pipeline workflow
 
 
 ## Prerequisites:
@@ -15,10 +15,16 @@
 kubectl apply -f Secrets/
 ```
 
-Running the above command applies the following `Secret`s to the cluster:
-- `basic_auth_secret.yaml`
+Running the above command applies the following `Secret` configurations to the cluster:
 - `ssh_secret.yaml`
 - `serviceaccount.yaml`
+
+**Output**
+
+```
+serviceaccount/build-bot created
+secret/ssh-key created
+```
 
 </details>
 
@@ -33,10 +39,16 @@ kubectl apply -f Tasks/
 ```
 
 Running the above command applies the following tasks to the cluster:
-- `show-readme.yaml`
+- `gradle-build.yaml`
 
-The `show-readme` task is invoked in the pipeline:
-- `Pipelines/pipeline.yaml`
+**Output**
+
+```
+task.tekton.dev/build created
+```
+
+The `gradle-build` task is invoked in the pipeline:
+- `Pipelines/gradle-build-test-pipeline.yaml`
 
 </details>
 
@@ -48,6 +60,12 @@ The `show-readme` task is invoked in the pipeline:
 
 ```shell
 kubectl apply -f Pipelines/
+```
+
+**Output**
+
+```
+pipeline.tekton.dev/gradle-build-test created
 ```
 
 </details>
@@ -64,6 +82,13 @@ kubectl get tasks
 
 ```shell
 kubectl get tasks -n namespace
+```
+
+**Output**
+
+```
+NAME          AGE
+build         2m37s
 ```
 
 </details>
@@ -88,13 +113,13 @@ kubectl apply -f \
 <summary>Expand</summary>
 
 ```shell
-kubectl create -f PipelineRuns/clone-read-pipeline-run.yaml
+kubectl create -f PipelineRuns/gradle-build-pipeline-run.yaml
 ```
 
 **Output**
 
 ```
-pipelinerun.tekton.dev/clone-read-run-4kgjr created
+pipelinerun.tekton.dev/gradle-build-run-t2m9p created
 ```
 
 This creates a `PipelineRun` with a unique name each time.
@@ -102,7 +127,7 @@ This creates a `PipelineRun` with a unique name each time.
 Use the `PipelineRun` name from the output of the previous step to monitor the `Pipeline` execution:
 
 ```shell
-tkn pipelinerun logs clone-read-run-xxxxx -f
+tkn pipelinerun logs gradle-build-run-t2m9p -f
 ```
 
 You may have to wait a few seconds. The output confirms that the repository was cloned successfully and displays the `README` file at the end.
@@ -118,20 +143,20 @@ You may have to wait a few seconds. The output confirms that the repository was 
 If you've used the `kubectl apply` subcommand to apply a task to your cluster, you can show the task status via the `tkn` CLI:
 
 ```shell
-tkn task describe show-readme
-tkn task start show-readme --showlog
+tkn task describe gradle-build
+tkn task start gradle-build --showlog
 ```
 
 </details>
 
 
-### **8**: Verify the `fetch-source` task of the `clone-read` pipeline (e.g., `show-readme`) is working as expected
+### **8**: Verify the `gradle-build` task of the `gradle-build-test` pipeline is working as expected
 
 <details>
 <summary>Expand</summary>
 
 ```shell
-kubectl get taskrun show-readme
+kubectl get taskrun gradle-build
 ```
 
 </details>

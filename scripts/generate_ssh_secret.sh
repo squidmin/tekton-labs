@@ -10,10 +10,13 @@ cat <<EOF > ./Secrets/ssh_secret.yaml
 apiVersion: v1
 kind: Secret
 metadata:
+  name: ssh-key
   annotations:
     tekton.dev/git-0: https://github.com
 type: kubernetes.io/ssh-auth
 stringData:
-  ssh-privatekey: ${GH_SSH_TOKEN}
-  known_hosts: ${GH_SSH_TOKEN}
+  ssh-privatekey: |
+    ${GH_SSH_TOKEN}
+  known_hosts: |
+    ${GH_SSH_TOKEN}
 EOF
