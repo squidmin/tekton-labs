@@ -3,7 +3,7 @@
 # Example usage:
 # ./scripts/generate_ssh_secret.sh SSH_SECRET_FILENAME
 
-GH_USERNAME="$1"
+SSH_SECRET_FILENAME="$1"
 GH_SSH_TOKEN="$(cat ~/.ssh/${SSH_SECRET_FILENAME})"
 
 cat <<EOF > ./Secrets/ssh_secret.yaml

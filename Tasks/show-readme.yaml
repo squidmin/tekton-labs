@@ -7,15 +7,15 @@ spec:
   workspaces:
   - name: source
   steps:
-  - name: dump-directory
-    image: alpine
-    command:
-      - /bin/sh
-    args:
-      - '-c'
-      - |
-        set -ex
-        find /workspace
+  # - name: dump-directory
+  #   image: alpine
+  #   command:
+  #     - /bin/sh
+  #   args:
+  #     - '-c'
+  #     - |
+  #       set -ex
+  #       find /workspace
   - name: read
     image: alpine:latest
     script: |
