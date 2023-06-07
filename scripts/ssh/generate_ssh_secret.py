@@ -1,6 +1,6 @@
 """
 Example usage:
-python3 ./scripts/generate_ssh_secret.py "$(cat ~/.ssh/id_ed25519)"
+python3 ./scripts/basic_auth/generate_ssh_secret.py "$(cat ~/.ssh/id_ed25519)"
 """
 
 import os
@@ -9,7 +9,7 @@ import yaml
 
 CWD = os.path.dirname(os.path.realpath(__file__))
 
-OUTPUT_FILE = CWD + "/../Secrets/ssh_secret.yaml"
+OUTPUT_FILE = CWD + "/../../Secrets/ssh_secret.yaml"
 
 SSH_KEY = sys.argv[1]
 

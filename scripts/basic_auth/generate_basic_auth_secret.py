@@ -1,6 +1,6 @@
 """
 Example usage:
-python3 ./scripts/generate_basic_auth_secret.py GH_USERNAME GH_PAT
+python3 ./scripts/basic_auth/generate_basic_auth_secret.py GH_USERNAME GH_PAT
 """
 
 import os
@@ -9,7 +9,7 @@ import yaml
 
 CWD = os.path.dirname(os.path.realpath(__file__))
 
-OUTPUT_FILE = CWD + "/../Secrets/basic_auth_secret.yaml"
+OUTPUT_FILE = CWD + "/../../Secrets/basic_auth_secret.yaml"
 
 GH_USERNAME = sys.argv[1], GH_PAT = sys.argv[2]
 
