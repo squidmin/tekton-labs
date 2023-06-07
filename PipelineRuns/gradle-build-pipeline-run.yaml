@@ -24,3 +24,5 @@ spec:
   params:
   - name: repo-url
     value: https://github.com/squidmin/java11-spring-gradle-cucumber-reference
+  - name: image-reference
+    value: container.registry.com/sublocation/java11-spring-gradle-cucumber-reference:latest

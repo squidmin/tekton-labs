@@ -1,0 +1,14 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: docker-build
+spec:
+  description: Docker build
+  workspaces:
+  - name: source
+  steps:
+    - name: build-image
+      image: docker-latest
+      script: |
+        #!/usr/bin/env sh
+        which docker

@@ -4,7 +4,7 @@ metadata:
   name: gradle-build
 spec:
   description: |
-    This pipeline clones a git repo and builds the project using Gradle.
+    This pipeline clones a GitHub repo and builds the project using Gradle.
   params:
   - name: repo-url
     type: string
@@ -14,7 +14,7 @@ spec:
     description: |
       This workspace contains the cloned repo files, so they can be read by the next task.
   - name: git-credentials
-    description: GitHub user's ssh credentials.
+    description: GitHub user credentials.
   tasks:
   - name: fetch-source
     taskRef:
@@ -27,10 +27,20 @@ spec:
     params:
     - name: url
       value: $(params.repo-url)
-  - name: build
+  - name: gradle-build
     runAfter: ["fetch-source"]
     taskRef:
       name: gradle-build
     workspaces:
     - name: source
       workspace: shared-data
+  - name: build-push
+    runAfter: ["gradle-build"]
+    taskRef:
+      name: kaniko
+    workspaces:
+    - name: source
+      workspace: shared-data
+    params:
+    - name: IMAGE
+      value: $(params.image-reference)
