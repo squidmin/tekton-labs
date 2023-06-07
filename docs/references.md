@@ -14,6 +14,11 @@
 - <a href="https://tekton.dev/docs/pipelines/tasks/#tasks">'Tasks' documentation</a>
 
 
+### Gists
+
+- <a href="https://gist.github.com/trisberg/37c97b6cc53def9a3e38be6143786589">Using a Local Registry with `minikube`</a>
+
+
 ### Authentication
 
 - <a href="https://tekton.dev/docs/how-to-guides/clone-repository/#git-authentication">How To: Clone a Git repository with Tekton - Authentication</a>
@@ -38,7 +43,12 @@
 
 ### Tekton debugging
 
-- <a href="https://www.tutorialworks.com/tekton-debug-list-files"></a>
+- <a href="https://www.tutorialworks.com/tekton-debug-list-files">Tekton Debug: List files</a>
+
+
+### Tools
+
+- <a href="https://github.com/tilt-dev/ctlptl">`ctlptl`: CLI for declaratively setting up local Kubernetes clusters</a>
 
 
 ### Issues

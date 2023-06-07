@@ -21,10 +21,12 @@ Use the `docker` CLI to run the `registry:2` container from Docker, listening on
 docker run -d -p 5000:5000 --restart=always --volume ~/.registry/storage:/var/lib/registry registry:2
 ```
 
+<img src="./img/docker_run_registry_2.gif" width="">
+
 </details>
 
 
-### 2. Edit `etc/hosts`
+### 2. Edit `/etc/hosts`
 
 <details>
 <summary>Expand</summary>
@@ -139,7 +141,7 @@ sudo ifconfig lo:0 $DEV_IP
 ```
 
 Note that the alias will need to be reestablished when you restart your machine.
-This can be avoided by using a launchdeamon on MacOS or by editing `/etc/network/interfaces` on Linux.
+This can be avoided by using a launchdeamon on macOS or by editing `/etc/network/interfaces` on Linux.
 
 </details>
 
