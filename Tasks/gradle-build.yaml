@@ -7,26 +7,24 @@ spec:
   workspaces:
   - name: source
   steps:
-#  - name: dump-directory
-#    image: alpine
-#    command:
-#      - /bin/sh
-#    args:
-#      - '-c'
-#      - |
-#        set -ex
-#        find /workspace
+  - name: dump-directory
+    image: alpine
+    command:
+      - /bin/sh
+    args:
+      - '-c'
+      - |
+        set -ex
+        find /workspace
   - name: build
     image: eclipse-temurin:11
     script: |
       #!/usr/bin/env bash
-      which java
-      ls -la
       WORKDIR=$(workspaces.source.path)
       cd $WORKDIR
       ./gradlew clean build
   - name: check-for-build-directory
-    image: alpine
+    image: alpine:latest
     script: |
       #!/usr/bin/env sh
       cd $(workspaces.source.path) && ls -la

@@ -13,8 +13,6 @@ spec:
   - name: shared-data  # A shared volume to store the code this task is going to download.
     description: |
       This workspace contains the cloned repo files, so they can be read by the next task.
-  - name: git-credentials
-    description: GitHub user's ssh credentials
   tasks:
   - name: fetch-source
     taskRef:
@@ -22,8 +20,6 @@ spec:
     workspaces:
     - name: output
       workspace: shared-data
-    - name: ssh-directory
-      workspace: git-credentials
     params:
     - name: url
       value: $(params.repo-url)

@@ -3,7 +3,7 @@ kind: PipelineRun
 metadata:
   generateName: gradle-build-run-
 spec:
-  serviceAccountName: build-bot
+  serviceAccountName: ''
   pipelineRef:
     name: gradle-build
   podTemplate:
@@ -21,8 +21,11 @@ spec:
   - name: git-credentials
     secret:
       secretName: git-credentials
+  - name: docker-credentials
+    secret:
+      secretName: docker-credentials
   params:
   - name: repo-url
-    value: https://github.com/squidmin/java11-spring-gradle-cucumber-reference
+    value: https://github.com/squidmin/java11-spring-gradle-bigquery-reference
   - name: image-reference
-    value: container.registry.com/sublocation/java11-spring-gradle-cucumber-reference:latest
+    value: us-central1-docker.pkg.dev/lofty-root-378503/java11-spring-gradle-bigquery-reference:latest

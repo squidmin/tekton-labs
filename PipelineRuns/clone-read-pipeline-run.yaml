@@ -3,7 +3,7 @@ kind: PipelineRun
 metadata:
   generateName: clone-read-run-
 spec:
-  serviceAccountName: build-bot
+  serviceAccountName: ''
   pipelineRef:
     name: clone-read
   podTemplate:
@@ -18,9 +18,6 @@ spec:
         resources:
           requests:
             storage: 1Gi
-  - name: git-credentials
-    secret:
-      secretName: git-credentials
   params:
   - name: repo-url
     value: https://github.com/squidmin/java11-spring-gradle-cucumber-reference

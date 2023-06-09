@@ -2,5 +2,6 @@
 
 .idea/
 
-Secrets/ssh_secret.yaml
-Secrets/basic_auth_secret.yaml
+Secrets/ssh-secret.yaml
+Secrets/basic-auth-secret.yaml
+Secrets/docker-credentials.yaml

@@ -14,6 +14,5 @@ spec:
   serviceAccountName: ''
   workspaces:
     - name: output
-      # emptyDir: {}
       persistentVolumeClaim:
         claimName: shared-workspace

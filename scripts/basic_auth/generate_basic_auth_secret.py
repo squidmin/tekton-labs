@@ -9,9 +9,10 @@ import yaml
 
 CWD = os.path.dirname(os.path.realpath(__file__))
 
-OUTPUT_FILE = CWD + "/../../Secrets/basic_auth_secret.yaml"
+OUTPUT_FILE = CWD + "/../../Secrets/basic-auth-secret.yaml"
 
-GH_USERNAME = sys.argv[1], GH_PAT = sys.argv[2]
+GH_USERNAME = sys.argv[1]
+GH_PAT = sys.argv[2]
 
 tekton_secret = {
     "apiVersion": "v1",

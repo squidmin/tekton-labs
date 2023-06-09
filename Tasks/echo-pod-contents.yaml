@@ -1,0 +1,17 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: echo-pod-contents
+spec:
+  description: Echo the contents of the running pod
+  workspaces:
+  - name: source
+  steps:
+  - name: echo
+    image: alpine:latest
+    script: |
+      #!/bin/bash
+      ls -la
+      cd workspace && ls -la
+      cd ..
+      cd $(workspaces.source.path) && ls -la

@@ -9,7 +9,7 @@ import yaml
 
 CWD = os.path.dirname(os.path.realpath(__file__))
 
-OUTPUT_FILE = CWD + "/../../Secrets/ssh_secret.yaml"
+OUTPUT_FILE = CWD + "/../../Secrets/ssh-secret.yaml"
 
 SSH_KEY = sys.argv[1]
 

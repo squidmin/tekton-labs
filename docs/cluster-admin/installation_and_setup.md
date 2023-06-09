@@ -1,5 +1,6 @@
 # Installation and setup
 
+
 ### **1**: `minikube` installation
 
 <details>
@@ -28,27 +29,46 @@ More info: https://tekton.dev/docs/cli/#installation
 </details>
 
 
-### **3**: (Optional) Mount directories from local system
+### **3**: Create a cluster
 
 <details>
 <summary>Expand</summary>
 
-```shell
-# minikube mount /path/on/local/system:/source
-minikube start --kubernetes-version v1.24.4 --mount-string="/path/on/local/system:/source" --mount
-```
-
-</details>
-
-
-### **4**: Create a cluster
-
-<details>
-<summary>Expand</summary>
+Start a cluster with 2 CPUs and 2 GB of memory:
 
 ```shell
 minikube start --kubernetes-version v1.24.4
-#minikube start --driver qemu --network socket_vmnet
+```
+
+There are options available to choose a different driver than the default (`docker`). For example:
+
+```shell
+minikube start \
+  --kubernetes-version v1.24.4 \
+  --driver qemu \
+  --network socket_vmnet
+```
+
+### Set memory and CPU
+
+By default, `minikube` starts a cluster with 2 CPUs and 2 GB of memory. More CPUs and memory can be added:
+
+```shell
+minikube start \
+  --memory 4068 \
+  --cpus 4 \
+  --kubernetes-version v1.24.4
+```
+
+### Mount a local directory to the cluster
+
+```shell
+export LOCAL_SOURCE_PATH="$HOME/path/to/local/source"
+minikube start \
+  --memory 4068 \
+  --cpus 4 \
+  --kubernetes-version v1.24.4 \
+  --mount-string="${LOCAL_SOURCE_PATH}:/local_source" --mount
 ```
 
 <img src="img/minikube_start_cmd.gif">
@@ -56,7 +76,7 @@ minikube start --kubernetes-version v1.24.4
 </details>
 
 
-### **5**: Check that the cluster was successfully created using `kubectl`
+### **4**: Check that the cluster was successfully created using `kubectl`
 
 <details>
 <summary>Expand</summary>
@@ -70,7 +90,7 @@ kubectl cluster-info
 </details>
 
 
-### **6**: Install Tekton pipelines
+### **5**: Install Tekton pipelines
 
 <details>
 <summary>Expand</summary>

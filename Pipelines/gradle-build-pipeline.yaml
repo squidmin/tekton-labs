@@ -9,12 +9,16 @@ spec:
   - name: repo-url
     type: string
     description: The git repo URL to clone from.
+  - name: image-reference
+    type: string
   workspaces:
   - name: shared-data
     description: |
       This workspace contains the cloned repo files, so they can be read by the next task.
   - name: git-credentials
     description: GitHub user credentials.
+  - name: docker-credentials
+    description: Docker credentials.
   tasks:
   - name: fetch-source
     taskRef:
@@ -27,20 +31,24 @@ spec:
     params:
     - name: url
       value: $(params.repo-url)
-  - name: gradle-build
-    runAfter: ["fetch-source"]
-    taskRef:
-      name: gradle-build
-    workspaces:
-    - name: source
-      workspace: shared-data
-  - name: build-push
-    runAfter: ["gradle-build"]
-    taskRef:
-      name: kaniko
-    workspaces:
-    - name: source
-      workspace: shared-data
-    params:
-    - name: IMAGE
-      value: $(params.image-reference)
+#  - name: echo-pod-contents
+#    runAfter:
+#      - fetch-source
+#    taskRef:
+#      name: echo-pod-contents
+#    workspaces:
+#    - name: source
+#      workspace: shared-data
+#  - name: build-push
+#    runAfter:
+#      - echo-pod-contents
+#    taskRef:
+#      name: kaniko
+#    workspaces:
+#    - name: source
+#      workspace: shared-data
+#    - name: dockerconfig
+#      workspace: docker-credentials
+#    params:
+#    - name: IMAGE
+#      value: $(params.image-reference)
